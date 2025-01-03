@@ -1,0 +1,1 @@
+Lab to perform support vector machine learning algorithm on a data set and train the model
