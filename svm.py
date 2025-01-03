@@ -19,3 +19,8 @@ feature_cancer_data=cancer_data_df[['Clump','UnifSize','UnifShape','MargAdh','Si
 #Create a feature data set on witch the model will train, only includes the stated columns in the new data set
 X=np.asarray(feature_cancer_data)
 print(X[0:5])
+y=np.asarray(cancer_data_df['Class'])
+print(y[0:5])
+x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=4)
+print('Train Set',x_train.shape,y_train.shape)
+print('Test Set',x_test.shape,y_test.shape)
