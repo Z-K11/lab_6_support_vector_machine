@@ -15,3 +15,7 @@ print(cancer_data_df.dtypes)
 cancer_data_df=cancer_data_df[pd.to_numeric(cancer_data_df['BareNuc'],errors='coerce').notnull()]
 cancer_data_df['BareNuc']=cancer_data_df['BareNuc'].astype('int')
 print(cancer_data_df.dtypes)
+feature_cancer_data=cancer_data_df[['Clump','UnifSize','UnifShape','MargAdh','SingEpiSize','BareNuc','BlandChrom','NormNucl','Mit']]
+#Create a feature data set on witch the model will train, only includes the stated columns in the new data set
+X=np.asarray(feature_cancer_data)
+print(X[0:5])
