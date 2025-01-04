@@ -28,6 +28,9 @@ from sklearn import svm
 model = svm.SVC(kernel='rbf')
 model.fit(x_train,y_train)
 predictions = model.predict(x_test)
+model2=svm.SVC(kernel='linear')
+model2.fit(x_train,y_train)
+predictions2=model2.predict(x_test)
 print(predictions[0:5])
 from sklearn.metrics import classification_report,confusion_matrix
 import itertools
@@ -51,13 +54,18 @@ def plot_confusion_matrix(cm,classes,normalize=False,title='Confusion Matrix',cm
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.savefig('Confusion_Matrix.png')
+    plt.savefig(title+'.png')
 
 cnf_matrix =confusion_matrix(y_test,predictions ,labels=[2,4])
 np.set_printoptions(precision=2)
 print(classification_report(y_test,predictions))
 plt.figure()
 plot_confusion_matrix(cnf_matrix,classes=['Benign(2)','Malignant(4)'],normalize=False,title='Confusion Matrix')
+cnf_matrix2 =confusion_matrix(y_test,predictions2 ,labels=[2,4])
+np.set_printoptions(precision=2)
+print(classification_report(y_test,predictions2))
+plt.figure()
+plot_confusion_matrix(cnf_matrix2,classes=['Benign(2)','Malignant(4)'],normalize=False,title='Confusion Matrix2')
 from sklearn.metrics import f1_score
 print(f1_score(y_test,predictions,average='weighted'))
 from sklearn.metrics import jaccard_score
