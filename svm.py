@@ -51,4 +51,10 @@ def plot_confusion_matrix(cm,classes,normalize=False,title='Confusion Matrix',cm
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    cnf_matrix =confusion_matrix(y_test,predictions,labels=[2,4])
+    plt.savefig('Confusion_Matrix.png')
+
+cnf_matrix =confusion_matrix(y_test,predictions ,labels=[2,4])
+np.set_printoptions(precision=2)
+print(classification_report(y_test,predictions))
+plt.figure()
+plot_confusion_matrix(cnf_matrix,classes=['Benign(2)','Malignant(4)'],normalize=False,title='Confusion Matrix')
