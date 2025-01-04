@@ -58,3 +58,5 @@ np.set_printoptions(precision=2)
 print(classification_report(y_test,predictions))
 plt.figure()
 plot_confusion_matrix(cnf_matrix,classes=['Benign(2)','Malignant(4)'],normalize=False,title='Confusion Matrix')
+from sklearn.metrics import f1_score
+print(f1_score(y_test,predictions,average='weighted'))
